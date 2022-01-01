@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="{%  static 'image/favicon.ico' %}" />
+		<title>Document</title>
+	</head>
+	<body>
+		{% if posts %}
+		<ul>
+			{% for post in posts %}
+			<li>{{post.title}}</li>
+			{% endfor %}
+		</ul>
+
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 83:80
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend/:/usr/src/app/
+    env_file:
+      - ./.env
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: ./docker-entrypoint.sh
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env.db
+
+volumes:
+  postgres_data:
