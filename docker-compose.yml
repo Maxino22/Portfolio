@@ -10,7 +10,7 @@ services:
     volumes:
       - ./backend/:/usr/src/app/
     ports:
-      - 8000:8000
+      - 84:84
     depends_on:
       - db
     command: ./docker-entrypoint.sh
@@ -20,6 +20,10 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     ports:
       - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=max
+        POSTGRES_DB=portfolio=value
 
 volumes:
   postgres_data:
