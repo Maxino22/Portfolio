@@ -11,3 +11,4 @@ static
 .vscode
 .env*
 *.pdf
+*.tar

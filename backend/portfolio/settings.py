@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['http://localhost:84']
+ALLOWED_HOSTS = ['blog.maxino.xyz' 'localhost:84', '127.0.0.1']
 
 
 # Application definition
