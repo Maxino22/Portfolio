@@ -73,6 +73,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = ['https://blog.maxino.xyz']
 
 INTERNAL_IPS = [
     # ...
