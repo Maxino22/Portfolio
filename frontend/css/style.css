@@ -332,10 +332,13 @@ h6 {
 	min-width: 240px;
 	display: inline;
 	position: absolute;
-	top: 550px;
+	top: 900px;
 	right: 480px;
 }
 
+.err {
+	background-color: red;
+}
 .alert .msg {
 	padding: 0 20px;
 	font-size: 18px;

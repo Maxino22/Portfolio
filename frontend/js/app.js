@@ -70,8 +70,6 @@ const alertBox = document.getElementById('alert');
 form.addEventListener('submit', handleMessage);
 
 function handleMessage(e) {
-	console.log(senderEmail.value, senderName.value);
-
 	const data = {
 		name: senderName.value,
 		subject: senderSubject.value,
@@ -83,19 +81,29 @@ function handleMessage(e) {
 
 	http
 		.post(data)
-		.then((data) => console.log(data))
-		.catch((err) => console.log(err));
+		.then(() => {
+			if (!err) {
+				// clear values
+				senderName.value = '';
+				senderSubject.value = '';
+				senderEmail.value = '';
+				senderMessage.value = '';
 
-	// clear values
-	senderName.value = '';
-	senderSubject.value = '';
-	senderEmail.value = '';
-	senderMessage.value = '';
-
-	alertBox.innerHTML = `<div class="alert"> 
-   <span class="msg">Message Recieved</span> 
-   <span class="fas fa-check"></span>
- </div>`;
+				alertBox.innerHTML = `<div class="alert"> 
+   				<span class="msg">Message Recieved</span> 
+   				<span class="fas fa-check"></span>
+				 </div>`;
+			} else {
+				throw new Error('Message not sent');
+			}
+		})
+		.catch((err) => {
+			alertBox.innerHTML = `<div class="alert err"> 
+				<span class="msg">Message Error</span> 
+				<span class="fas fa-times"></span>
+			</div>`;
+			console.log(err);
+		});
 
 	//timeout after 3 seconds
 	setTimeout(() => {

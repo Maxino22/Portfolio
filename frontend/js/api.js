@@ -1,8 +1,8 @@
 class maxinoHttp {
 	constructor() {
-		this.profileUrl = 'http://127.0.0.1:8000/profile/';
-		this.contactUrl = 'http://127.0.0.1:8000/contacts/';
-		this.BlogsUrl = 'http://127.0.0.1:8000/blogs/';
+		this.profileUrl = 'https://blog.maxino.xyz/profile/';
+		this.contactUrl = 'https://blog.maxino.xyz/contacts/';
+		this.BlogsUrl = 'http://blogs.maxino.xyz/blogs/';
 	}
 	async get() {
 		const response = await fetch(this.profileUrl);

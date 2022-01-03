@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'mysecret' )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG', True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -43,7 +45,9 @@ INSTALLED_APPS = [
     'blog',
     'debug_toolbar',
     'django_summernote',
-    'django_filters'
+    'django_filters',
+      'cloudinary',
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -55,12 +59,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:84 ',
+    'https://blog.maxino.xyz ', 
 ]
+
+
 
 # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_ALL_ORIGINS = True
@@ -73,11 +80,15 @@ INTERNAL_IPS = [
     # ...
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 ROOT_URLCONF = 'portfolio.urls'
 SUMMERNOTE_THEME = 'bs5'
+
+STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -97,7 +108,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
+# Cloud storage
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':os.getenv('CLOUD_NAME'),
+    'API_KEY':os.getenv('API_KEY') ,
+    'API_SECRET':os.getenv('API_SECRET') ,
+}
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 if DEBUG ==True:
@@ -157,11 +176,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

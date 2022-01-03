@@ -17,6 +17,9 @@ class Profile(models.Model):
         name = str(self.first_name + ' ' + self.last_name)
         return name
 
+profile = Profile()
+
+print(profile.profile_pic.storage)
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
