@@ -82,12 +82,12 @@ INTERNAL_IPS = [
 ]
 
 
-
 ROOT_URLCONF = 'portfolio.urls'
 SUMMERNOTE_THEME = 'bs5'
 
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
+WHITENOISE_ROOT = os.path.join(STATIC_ROOT, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -186,6 +186,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
+     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+       'limit': 3
 
     # 'DEFAULT_RENDERER_CLASSES': [
     # 'rest_framework.renderers.JSONRenderer']

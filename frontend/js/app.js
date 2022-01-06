@@ -81,8 +81,8 @@ function handleMessage(e) {
 
 	http
 		.post(data)
-		.then(() => {
-			if (!err) {
+		.then((resData) => {
+			if (resData.ok) {
 				// clear values
 				senderName.value = '';
 				senderSubject.value = '';

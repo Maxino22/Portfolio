@@ -26,7 +26,7 @@ class maxinoHttp {
 			body: JSON.stringify(data),
 		});
 
-		const resData = await response.json();
+		const resData = response;
 		return resData;
 	}
 }
