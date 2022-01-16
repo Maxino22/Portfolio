@@ -17,9 +17,6 @@ class Profile(models.Model):
         name = str(self.first_name + ' ' + self.last_name)
         return name
 
-profile = Profile()
-
-print(profile.profile_pic.storage)
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -30,9 +27,11 @@ class Tag(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=255, null=False)
+    
     sub_title = models.TextField(null=False)
     thumbnail = models.ImageField(null=False,
                                   upload_to="blog/%Y/%m/%d/")
+    img_alt = models.CharField(max_length=100)
     blog_date = models.DateTimeField(auto_now=True)
     body = models.TextField(null=True, blank=True)
     featured = models.BooleanField(default=False)

@@ -6,6 +6,7 @@ cloudinary==1.28.0
 Django==4.0
 django-cloudinary-storage==0.3.0
 django-cors-headers==3.10.1
+django-crispy-forms==1.13.0
 django-debug-toolbar==3.2.4
 django-filter==21.1
 django-summernote==0.8.20.0
