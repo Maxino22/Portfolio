@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'mysecret' )
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', True)
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,15 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'rest_framework',
     'corsheaders',
-    'blog',
     'debug_toolbar',
+    'blog',
     'django_summernote',
     'django_filters',
       'cloudinary',
-    'cloudinary_storage'
+    'cloudinary_storage',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -85,11 +89,11 @@ INTERNAL_IPS = [
 ROOT_URLCONF = 'portfolio.urls'
 SUMMERNOTE_THEME = 'bs5'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 STATIC_URL = '/static/'
-WHITENOISE_ROOT = os.path.join(STATIC_ROOT, 'static')
+# WHITENOISE_ROOT = os.path.join(STATIC_ROOT, 'static')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -112,9 +116,9 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Cloud storage
 # Cloudinary stuff
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME':os.getenv('CLOUD_NAME'),
-    'API_KEY':os.getenv('API_KEY') ,
-    'API_SECRET':os.getenv('API_SECRET') ,
+    'CLOUD_NAME':os.getenv('CLOUD_NAME', "maxino" ),
+    'API_KEY':os.getenv('API_KEY', "376936487283534" ) ,
+    'API_SECRET':os.getenv('API_SECRET', "VGJ6orHXbRUip-fqjhk6u6mNuUE" ) 
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -123,11 +127,11 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 if DEBUG ==True:
     DATABASES = {
     'default': {
-        'ENGINE': '',
-        'NAME': '',
-        'HOST': '',
-        'USER': '',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfolio',
+        'HOST': 'localhost',
+        'USER': 'postgres',
+        'PASSWORD': 'max',
         'PORT': ''
         }
       }
@@ -183,6 +187,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+## session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = 600
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
