@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['blog.maxino.xyz']
 
 
 # Application definition
@@ -116,9 +116,9 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Cloud storage
 # Cloudinary stuff
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME':os.getenv('CLOUD_NAME', "maxino" ),
-    'API_KEY':os.getenv('API_KEY', "376936487283534" ) ,
-    'API_SECRET':os.getenv('API_SECRET', "VGJ6orHXbRUip-fqjhk6u6mNuUE" ) 
+    'CLOUD_NAME':os.getenv('CLOUD_NAME'),
+    'API_KEY':os.getenv('API_KEY') ,
+    'API_SECRET':os.getenv('API_SECRET' ) 
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -127,11 +127,11 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 if DEBUG ==True:
     DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfolio',
-        'HOST': 'localhost',
-        'USER': 'postgres',
-        'PASSWORD': 'max',
+        'ENGINE': '',
+        'NAME': '',
+        'HOST': '',
+        'USER': '',
+        'PASSWORD': '',
         'PORT': ''
         }
       }
