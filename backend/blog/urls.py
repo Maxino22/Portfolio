@@ -4,8 +4,9 @@ from . import views
 
 urlpatterns = [
     # html routes
-    path('', views.posts, name='posts'),
-    path('<str:post_slug>/', views.post , name='post'),
+    #  path('', views.home ),
+     path('', views.posts, name='posts'),
+     path('posts/<str:post_slug>/', views.post, name='post'),
     # api endpoints
     path('profile/', views.Profile.as_view()),
     path('blogs/', views.BlogsView.as_view()),

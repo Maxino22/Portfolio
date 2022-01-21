@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 
-ALLOWED_HOSTS = ['blog.maxino.xyz']
+ALLOWED_HOSTS = ['blog.maxino.xyz', 'localhost']
 
 
 # Application definition
@@ -124,19 +124,8 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if DEBUG ==True:
-    DATABASES = {
-    'default': {
-        'ENGINE': '',
-        'NAME': '',
-        'HOST': '',
-        'USER': '',
-        'PASSWORD': '',
-        'PORT': ''
-        }
-      }
-else:
-    DATABASES = {
+
+DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
         'NAME': os.getenv('DB_NAME'),
