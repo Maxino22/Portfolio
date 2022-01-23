@@ -10,6 +10,8 @@ from .filters import PostFilter
 from .serializers import BlogSerializer, ProfileSerializer, TagSerializer, ContactSerializer, CommentSerializer
 # Create your views here.
 
+
+
 def posts(request):
     posts = Blog.objects.all()
     myfilter = PostFilter(request.GET, queryset=posts)

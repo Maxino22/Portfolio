@@ -21,7 +21,7 @@ class UI {
           <p class="post-intro">
            ${results.sub_title}
           </p>
-          <a href="https://blog.maxino.xyz/blog/${results.slug}">Read More</a>
+          <a href="https://blog.maxino.xyz/posts/${results.slug}">Read More</a>
         </div>
       </div>
     </div>

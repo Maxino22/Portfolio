@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['blog.maxino.xyz', 'localhost']
+ALLOWED_HOSTS = ['blog.maxino.xyz']
 
 
 # Application definition
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.humanize',
     'rest_framework',
     'corsheaders',
@@ -71,7 +73,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://blog.maxino.xyz ', 
 ]
 
-
+SITE_ID = 1
 
 # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_ALL_ORIGINS = True
@@ -87,7 +89,7 @@ INTERNAL_IPS = [
 
 
 ROOT_URLCONF = 'portfolio.urls'
-SUMMERNOTE_THEME = 'bs5'
+SUMMERNOTE_THEME = 'bs3'
 
 STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 STATIC_URL = '/static/'
