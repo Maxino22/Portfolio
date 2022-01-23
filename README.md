@@ -1,5 +1,5 @@
 # My Personal Website
- This website is available at maxino.xyz
+ This website is available at [maxino.xyz](https://maxino.xyz)
   ![Maxwell Muhanda](https://github.com/Maxino22/Portfolio/blob/master/Screenshot%20(86).png)
  This project combines the following technologies:
   1.Django (REST Framework)
