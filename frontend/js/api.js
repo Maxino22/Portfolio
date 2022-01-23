@@ -2,7 +2,7 @@ class maxinoHttp {
 	constructor() {
 		this.profileUrl = 'https://blog.maxino.xyz/profile/';
 		this.contactUrl = 'https://blog.maxino.xyz/contacts/';
-		this.BlogsUrl = 'http://blogs.maxino.xyz/blogs/';
+		this.BlogsUrl = 'https://blogs.maxino.xyz/blogs/';
 	}
 	async get() {
 		const response = await fetch(this.profileUrl);
