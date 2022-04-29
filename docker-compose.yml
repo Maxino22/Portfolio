@@ -3,15 +3,15 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
-    # ports:
-    # - 83:80
+    ports:
+      - 83:80
     container_name: frontend
   backend:
     build: ./backend
     volumes:
       - ./backend:/app
-    # ports:
-    # - 84:84
+    ports:
+      - 84:84
     depends_on:
       - db
     command: ./docker-entrypoint.sh
