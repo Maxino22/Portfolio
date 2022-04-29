@@ -5,6 +5,7 @@ services:
     build: ./frontend
     # ports:
     # - 83:80
+    container_name: frontend
   backend:
     build: ./backend
     volumes:
@@ -16,6 +17,7 @@ services:
     command: ./docker-entrypoint.sh
     env_file:
       - ./.env
+    container_name: backend
   db:
     image: postgres:13.0-alpine
     volumes:
