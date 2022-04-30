@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN chmod +x docker-entrypoint.sh
-EXPOSE 8000
+EXPOSE 84
