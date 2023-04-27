@@ -22,9 +22,9 @@ services:
       - 5432:5432
     env_file:
       - ./.env.db
-  resume:
-    build: ./my_cv
-    container_name: resume
+  #resume:
+   # build: ./my_cv
+   # container_name: resume
 
 volumes:
   postgres_data:
